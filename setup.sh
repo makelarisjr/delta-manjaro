@@ -2,7 +2,7 @@
 ################ SETUP SCRIPT FOR PENTEST MANJARO ###########
 sudo pacman -Syyu
 sudo pacman -S yay
-yay -S go docker burpsuite virtualbox chromium visual-studio-code-bin python2-pip python-pip discord lsd binwalk qbittorrent vim nmap proxychains-ng
+yay -S go docker burpsuite virtualbox chromium visual-studio-code-bin goland python2-pip python-pip discord lsd binwalk qbittorrent android-sdk-build-tools vim nmap proxychains-ng 
 
 # HASHCAT ?
 mkdir -p ~/ctf/tools
@@ -16,15 +16,17 @@ wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy32
 wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64
 
 
-python -m pip install --user wfuzz
+python -m pip install --user wfuzz frida-tools objection
 
 # SETUP ZSH
 cd ~/delta-manjaro
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 sed -i 's/_THEME=\"robbyrussell\"/_THEME=\"pygmalion\"/g' ~/.zshrc
-
 echo '[[ -f ~/.config/zsh/zsh.conf ]] && source ~/.config/zsh/zsh.conf' >> ~/.zshrc
 cp -r zsh/ ~/.config/
+cp -r scripts/ ~/
+
+mkdir -p ~/Pictures/Screenshots
 
 go get github.com/OJ/gobuster && go install github.com/OJ/gobuster
 
